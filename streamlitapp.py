@@ -1,12 +1,12 @@
 import pandas as pd
 import joblib
 from sklearn.metrics import accuracy_score
-fom sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split
 import streamlit as st
 #load the updated model to made live
-model = joblib.load("liveModelV1.pkl")
+model = joblib.load("liveModelV1.pklgit ")
 #load the data to check accuracy
-data = pd.read_csv("mobile_price_range_data.csv")
+data = pd.read_csv("mobile_price_range_data (1).csv")
 
 X = data.iloc[:, :-1]
 y = data.iloc[:, -1]
@@ -28,13 +28,13 @@ st.write(f"Model {accuracy}")
 st.header("Real-Time Prediction")
 input_data = []
 for col in X_test.columns:
-    input_value = st.number_inp[ut(f' Input For Feature {col}', value = '')]
+    input_value = st.number_input(f' Input For Feature {col}', value = 0)
     input_data.append(input_value)
 
 #convert input data to dataframe
 input_df = pd.DataFrame([input_data], columns = X_test.columns)  
 
 #make p[redictuions
-if st.bitton("Predict"):
+if st.button("Predict"):
   prediction = model.predict(input_df)
-  st.write(f'Prediction: {Predction[0]}')
+  st.write(f'prediction: {prediction[0]}')
