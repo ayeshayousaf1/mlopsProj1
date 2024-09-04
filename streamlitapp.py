@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import streamlit as st
 #load the updated model to made live
-model = joblib.load("liveModelV1.pklgit ")
+model = joblib.load("liveModelV1.pkl")
 #load the data to check accuracy
 data = pd.read_csv("mobile_price_range_data (1).csv")
 
@@ -37,4 +37,4 @@ input_df = pd.DataFrame([input_data], columns = X_test.columns)
 #make p[redictuions
 if st.button("Predict"):
   prediction = model.predict(input_df)
-  st.write(f'prediction: {prediction[0]}')
+  st.write(f'Prediction: {prediction[0]}')
